@@ -1,5 +1,6 @@
 import { createContext } from 'react';
 import { ICartProduct, ShippingAddress } from '../../interfaces';
+import { IUserImage } from '../../interfaces/cart';
 
 interface ContextProps {
   isLoaded: boolean;
@@ -13,7 +14,7 @@ interface ContextProps {
 
   // Methods
   addProductToCart: (product: ICartProduct) => void;
-  updateCartQuantity: (product: ICartProduct) => void;
+  updateCartQuantity: (product: ICartProduct, userImages: IUserImage[]) => void;
   removeCartProduct: (product: ICartProduct) => void;
   updateAddress: (address: ShippingAddress) => void;
 

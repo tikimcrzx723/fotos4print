@@ -100,7 +100,6 @@ export const CartProvider: FC<PropsWithChildren<Props>> = ({ children }) => {
     }
   }, []);
 
-
   const addProductToCart = (product: ICartProduct) => {
     const productInCart = state.cart.some((p) => p._id === product._id);
     if (!productInCart) {
@@ -137,7 +136,11 @@ export const CartProvider: FC<PropsWithChildren<Props>> = ({ children }) => {
     });
   };
 
-  const updateCartQuantity = (product: ICartProduct) => {
+  const updateCartQuantity = (
+    product: ICartProduct,
+    userImages: IUserImage[] = []
+  ) => {
+    product.userImages = userImages;
     dispatch({ type: '[Cart] - Change cart quantity', payload: product });
   };
 

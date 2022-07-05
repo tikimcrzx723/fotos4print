@@ -19,6 +19,7 @@ import { Badge, Box, Card, CardActions, CardMedia, Grid } from '@mui/material';
 import { ItemCounter } from '../ui';
 import { CartContext } from '../../context';
 import { ICartProduct, IOrderItem } from '../../interfaces';
+import { IUserImage } from '../../interfaces/cart';
 
 interface Props {
   open: boolean;
@@ -39,15 +40,17 @@ export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
   const [imagesUser, setImagesUser] = useState([]);
   const [saveImagesOrderUser, setSaveImagesOrderUser] = useState([]);
   const { updateCartQuantity } = useContext(CartContext);
+  const [imagesForUser, setImagesForUser] = useState([]);
 
   const updateQuantiry = (quantity: number) => {};
-  const userSaveImage: any = [];
+  // const userSaveImage: any = [];
 
   const uploadImages = () => {
     if (saveImagesOrderUser.length === 0) {
       return;
     }
 
+    const auxImage: any = [];
     saveImagesOrderUser.forEach(async (file) => {
       const formData = new FormData();
       formData.append('file', file);
@@ -56,8 +59,9 @@ export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
         formData
       );
 
-      userSaveImage.push({ image: data.message, quantity: 1 });
+      auxImage.push({ image: data.message, quantity: 1 });
     });
+    setImagesForUser(auxImage as any);
   };
 
   const onFilesSelected = async ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -96,10 +100,10 @@ export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
     product: ICartProduct,
     newQuantityValue: number
   ) => {
-    product.quantity = newQuantityValue;
-    updateCartQuantity(product);
-    product.userImages = userSaveImage;
     uploadImages();
+    product.quantity = newQuantityValue;
+    // product.userImages = userSaveImage;
+    updateCartQuantity(product, imagesForUser as IUserImage[]);
   };
 
   return (

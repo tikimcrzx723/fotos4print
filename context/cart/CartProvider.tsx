@@ -138,9 +138,11 @@ export const CartProvider: FC<PropsWithChildren<Props>> = ({ children }) => {
 
   const updateCartQuantity = (
     product: ICartProduct,
-    userImages: IUserImage[] = []
+    userImages: IUserImage[] | null = []
   ) => {
-    product.userImages = userImages;
+    if (userImages !== null) {
+      product.userImages = userImages;
+    }
     dispatch({ type: '[Cart] - Change cart quantity', payload: product });
   };
 

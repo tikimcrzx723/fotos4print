@@ -31,7 +31,7 @@ export const CartList: FC<PropsWithChildren<Props>> = ({
     newQuantityValue: number
   ) => {
     product.quantity = newQuantityValue;
-    updateCartQuantity(product);
+    updateCartQuantity(product, null);
   };
 
   const [openLoadImage, setOpenLoadImage] = useState(false);

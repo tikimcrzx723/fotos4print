@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import formidable from 'formidable';
 import { v2 as cloudinary } from 'cloudinary';
-import { getToken } from 'next-auth/jwt';
+import { getSession } from 'next-auth/react';
 
 cloudinary.config(process.env.CLOUDINARY_URL || '');
 
@@ -49,7 +49,7 @@ const parseFiles = async (req: NextApiRequest): Promise<string> => {
 };
 
 const uploadFile = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-  const session = await getToken({ req, secret: process.env.NEXTAUTH_URL });
+  const session = await getSession({ req });
 
   if (!session) {
     return res.status(200).json({ message: 'Your need a start session' });

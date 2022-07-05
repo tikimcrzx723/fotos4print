@@ -31,7 +31,6 @@ export default NextAuth({
         },
       },
       async authorize(credentials) {
-        console.log({ credentials });
 
         return await dbUsers.checkUserEmailPassword(
           credentials!.email,

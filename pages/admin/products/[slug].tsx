@@ -164,8 +164,6 @@ const ProductAdminPage: NextPage<PropsWithChildren<Props>> = ({ product }) => {
         method: form._id ? 'PUT' : 'POST',
         data: form,
       });
-
-      console.log({ data });
       if (!form._id) {
         router.replace(`/admin/products/${form.slug}`);
       } else {

@@ -83,7 +83,6 @@ const updateProducts = async (
         const [fileId, extension] = image
           .substring(image.lastIndexOf('/') + 1)
           .split('.');
-        console.log({ image, fileId, extension });
         await cloudinary.uploader.destroy(fileId);
       }
     });

@@ -101,8 +101,6 @@ export const CartProvider: FC<PropsWithChildren<Props>> = ({ children }) => {
   }, []);
 
   const addPthotoToUserCart = (index: number, userImages: IUserImage[]) => {
-    console.log(userImages);
-    console.log(state.cart);
 
     state.cart[index].userImages = userImages;
   };

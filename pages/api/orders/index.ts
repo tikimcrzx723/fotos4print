@@ -45,7 +45,6 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
           (p) => new mongoose.Types.ObjectId(p._id).toString() === current._id
         )
         ?.price.find((si) => si.size === current.size)?.price;
-      console.log(current.size);
 
       if (!currentPrice) {
         throw new Error('Verifique el carrito de nuevo, producto no existe');
@@ -53,8 +52,6 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
       return currentPrice * current.quantity + prev;
     }, 0);
-
-    console.log(subTotal);
 
     const taxRate = Number(process.env.NEXT_PUBLIC_TAX_RATE || 0);
     const backendTotal = subTotal * (taxRate + 1);

@@ -46,7 +46,6 @@ export const CartList: FC<PropsWithChildren<Props>> = ({
   };
 
   const productToShow = products ? products : cart;
-  console.log(productToShow);
   
 
   return (

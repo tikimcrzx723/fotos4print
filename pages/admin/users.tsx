@@ -31,9 +31,6 @@ const UsersPage = () => {
     setUsers(updatedUsers);
 
     try {
-      console.log(userId);
-      console.log(newRole);
-
       await appApi.put('/admin/users', { userId, role: newRole });
     } catch (error) {
       setUsers(previosUsers);

@@ -56,12 +56,8 @@ export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
         formData
       );
 
-      console.log(data);
-
       userSaveImage.push({ image: data.message, quantity: 1 });
     });
-
-    console.log(userSaveImage);
 
     addPthotoToUserCart(1, userSaveImage as any);
   };
@@ -76,7 +72,6 @@ export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
       const fileUploaded = [];
       for (const file of target.files) {
         const image = URL.createObjectURL(file);
-        console.log(images);
         // console.log(file.size);
         // console.log(formData);
 

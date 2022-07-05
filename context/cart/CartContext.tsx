@@ -13,10 +13,6 @@ interface ContextProps {
 
   // Methods
   addProductToCart: (product: ICartProduct) => void;
-  addPthotoToUserCart: (
-    index: number,
-    userImages: { image: string; quantity: number }[]
-  ) => void;
   updateCartQuantity: (product: ICartProduct) => void;
   removeCartProduct: (product: ICartProduct) => void;
   updateAddress: (address: ShippingAddress) => void;

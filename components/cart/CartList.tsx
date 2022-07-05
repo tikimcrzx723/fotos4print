@@ -10,7 +10,6 @@ import {
   Link,
   Typography,
 } from '@mui/material';
-import { ItemCounter } from '../ui';
 import { CartContext } from '../../context/cart';
 import { ICartProduct, IOrderItem } from '../../interfaces';
 import { UploadImageByCart } from '../products';

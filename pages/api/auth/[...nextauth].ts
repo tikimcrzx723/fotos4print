@@ -11,6 +11,17 @@ export default NextAuth({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
     }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code"
+        }
+      }
+    }),
     // GoogleProvider({
     //   clientId: '',
     //   clientSecret: '',
@@ -20,18 +31,17 @@ export default NextAuth({
       name: 'Custom Login',
       credentials: {
         email: {
-          label: 'Correo',
+          label: 'Email',
           type: 'email',
           placeholder: 'email@gmail.com',
         },
         password: {
-          label: 'Contraseña',
+          label: 'Password',
           type: 'password',
           placeholder: '********',
         },
       },
       async authorize(credentials) {
-
         return await dbUsers.checkUserEmailPassword(
           credentials!.email,
           credentials!.password

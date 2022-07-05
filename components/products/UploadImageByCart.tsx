@@ -38,7 +38,7 @@ export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [imagesUser, setImagesUser] = useState([]);
   const [saveImagesOrderUser, setSaveImagesOrderUser] = useState([]);
-  const { updateCartQuantity, addPthotoToUserCart } = useContext(CartContext);
+  const { updateCartQuantity } = useContext(CartContext);
 
   const updateQuantiry = (quantity: number) => {};
   const userSaveImage: any = [];
@@ -58,8 +58,6 @@ export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
 
       userSaveImage.push({ image: data.message, quantity: 1 });
     });
-
-    addPthotoToUserCart(1, userSaveImage as any);
   };
 
   const onFilesSelected = async ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -100,6 +98,7 @@ export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
   ) => {
     product.quantity = newQuantityValue;
     updateCartQuantity(product);
+    product.userImages = userSaveImage;
     uploadImages();
   };
 

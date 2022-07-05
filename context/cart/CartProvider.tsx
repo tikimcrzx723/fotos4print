@@ -100,10 +100,6 @@ export const CartProvider: FC<PropsWithChildren<Props>> = ({ children }) => {
     }
   }, []);
 
-  const addPthotoToUserCart = (index: number, userImages: IUserImage[]) => {
-
-    state.cart[index].userImages = userImages;
-  };
 
   const addProductToCart = (product: ICartProduct) => {
     const productInCart = state.cart.some((p) => p._id === product._id);
@@ -212,7 +208,6 @@ export const CartProvider: FC<PropsWithChildren<Props>> = ({ children }) => {
 
         // Methods
         addProductToCart,
-        addPthotoToUserCart,
         updateCartQuantity,
         removeCartProduct,
         updateAddress,

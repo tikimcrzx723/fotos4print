@@ -17,13 +17,14 @@ import {
 import {
   AccountCircleOutlined,
   AdminPanelSettings,
+  CardGiftcardOutlined,
   CategoryOutlined,
+  ColorLensOutlined,
   ConfirmationNumberOutlined,
   DashboardOutlined,
-  EscalatorWarningOutlined,
-  FemaleOutlined,
+  DomainOutlined,
   LoginOutlined,
-  MaleOutlined,
+  PhotoCameraOutlined,
   SearchOutlined,
   VpnKeyOutlined,
 } from '@mui/icons-material';
@@ -96,34 +97,45 @@ export const SideMenu = () => {
           <ListItem
             button
             sx={{ display: { xs: '', sm: 'none' } }}
-            onClick={() => navigateTo('/category/men')}
+            onClick={() => navigateTo('/category/Photo')}
           >
             <ListItemIcon>
-              <MaleOutlined />
+              <PhotoCameraOutlined />
             </ListItemIcon>
-            <ListItemText primary={'Hombres'} />
+            <ListItemText primary={'Photo'} />
           </ListItem>
 
           <ListItem
             button
             sx={{ display: { xs: '', sm: 'none' } }}
-            onClick={() => navigateTo('/category/women')}
+            onClick={() => navigateTo('/category/gift')}
           >
             <ListItemIcon>
-              <FemaleOutlined />
+              <CardGiftcardOutlined />
             </ListItemIcon>
-            <ListItemText primary={'Mujeres'} />
+            <ListItemText primary={'Gift'} />
           </ListItem>
 
           <ListItem
             button
             sx={{ display: { xs: '', sm: 'none' } }}
-            onClick={() => navigateTo('/category/kid')}
+            onClick={() => navigateTo('/category/press')}
           >
             <ListItemIcon>
-              <EscalatorWarningOutlined />
+              <DomainOutlined />
             </ListItemIcon>
-            <ListItemText primary={'Niños'} />
+            <ListItemText primary={'Press'} />
+          </ListItem>
+
+          <ListItem
+            button
+            sx={{ display: { xs: '', sm: 'none' } }}
+            onClick={() => navigateTo('/category/canva')}
+          >
+            <ListItemIcon>
+              <ColorLensOutlined />
+            </ListItemIcon>
+            <ListItemText primary={'Canvas'} />
           </ListItem>
 
           {isLoggedIn ? (

@@ -46,6 +46,7 @@ const ProductPage: NextPage<Props> = ({ product }) => {
   const onAddProduct = () => {
     if (!tempCartProduct.size) return;
     tempCartProduct.price = priceChange;
+    tempCartProduct.userImages = [];
 
     addProductToCart(tempCartProduct);
     router.push('/cart');

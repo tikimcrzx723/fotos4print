@@ -2,6 +2,7 @@ import { FC, PropsWithChildren } from 'react';
 import Head from 'next/head';
 
 import { Navbar, SideMenu } from '../ui';
+import { Grid, Typography } from '@mui/material';
 
 interface Props {
   title: string;
@@ -19,12 +20,12 @@ export const ShopLayout: FC<PropsWithChildren<Props>> = ({
     <>
       <Head>
         <title>{title}</title>
-        <meta name="description" content={pageDescription} />
+        <meta name='description' content={pageDescription} />
 
-        <meta name="og:title" content={title} />
-        <meta name="og:description" content={pageDescription} />
+        <meta name='og:title' content={title} />
+        <meta name='og:description' content={pageDescription} />
 
-        {imageFullUrl && <meta name="og:image" content={imageFullUrl} />}
+        {imageFullUrl && <meta name='og:image' content={imageFullUrl} />}
       </Head>
       <nav>
         <Navbar />
@@ -41,7 +42,21 @@ export const ShopLayout: FC<PropsWithChildren<Props>> = ({
       </main>
 
       {/* Footer */}
-      <footer>{/* TODO: my custom footer */}</footer>
+      <footer>
+        <Grid
+          style={{
+            margin: '80px auto',
+            maxWidth: '1140px',
+            padding: '0px 30px',
+          }}
+          container
+          spacing={3}
+        >
+          <Grid item xs={4} md={12}>
+            <Typography variant='h6'>Fotos4Print © 2022</Typography>
+          </Grid>
+        </Grid>
+      </footer>
     </>
   );
 };

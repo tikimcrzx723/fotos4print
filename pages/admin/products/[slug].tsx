@@ -87,7 +87,7 @@ const ProductAdminPage: NextPage<PropsWithChildren<Props>> = ({ product }) => {
     getValues('price').map(() => {
       append({ size: '', price: 0 });
     });
-  }, []);
+  }, [append, getValues]);
 
   useEffect(() => {
     const subscription = watch((value, { name, type }) => {

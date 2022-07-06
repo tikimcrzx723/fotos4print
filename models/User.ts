@@ -6,6 +6,7 @@ const userSchema = new Schema(
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    isActive: { type: Boolean, default: false },
     role: {
       type: String,
       enum: {
@@ -17,7 +18,7 @@ const userSchema = new Schema(
           'federal',
           'frecuency',
         ],
-        message: '{VALUE} no es un role válido',
+        message: '{VALUE} is not a valid role',
         default: 'client',
         required: true,
       },

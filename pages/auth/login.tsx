@@ -45,16 +45,6 @@ const LoginPage = () => {
 
   const onLoginUser = async ({ email, password }: FormData) => {
     setShowError(false);
-    // const isValidLogin = await loginUser(email, password);
-
-    // if (!isValidLogin) {
-    //   setShowError(true);
-    //   setTimeout(() => setShowError(false), 3000);
-    //   return;
-    // }
-
-    // const destination = router.query.p?.toString() || '/';
-    // router.replace(destination);
     await signIn('credentials', { email, password });
   };
 
@@ -65,7 +55,7 @@ const LoginPage = () => {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <Typography variant='h1' component='h1'>
-                Iniciar Sesión
+                Sign in to foto4print
               </Typography>
               <Chip
                 label='No reconocemos ese usuario / contraseña'
@@ -77,12 +67,12 @@ const LoginPage = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                type='email'
-                label='Correo'
+                type='mail'
+                label='Email'
                 variant='filled'
                 fullWidth
                 {...register('email', {
-                  required: 'El campo es requerido',
+                  required: 'This field is required',
                   validate: validations.isEmail,
                 })}
                 error={!!errors.email}
@@ -91,13 +81,13 @@ const LoginPage = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                label='Contraseña'
+                label='Password'
                 type='password'
                 variant='filled'
                 fullWidth
                 {...register('password', {
-                  required: 'Este campo es requerido',
-                  minLength: { value: 6, message: 'Mínimo 6 caracteres' },
+                  required: 'This field is required',
+                  minLength: { value: 6, message: '6 characters minimum' },
                 })}
                 error={!!errors.password}
                 helperText={errors.password?.message}
@@ -117,6 +107,7 @@ const LoginPage = () => {
             </Grid>
 
             <Grid item xs={12} display='flex' justifyContent='end'>
+              <Typography>New to foto4print?</Typography>
               <NextLink
                 href={
                   router.query.p
@@ -125,7 +116,13 @@ const LoginPage = () => {
                 }
                 passHref
               >
-                <Link underline='always'>¿No tienes cuenta?</Link>
+                <Link
+                  sx={{ marginLeft: 1 }}
+                  underline='always'
+                  color='secondary'
+                >
+                  create an account
+                </Link>
               </NextLink>
             </Grid>
 

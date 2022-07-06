@@ -36,6 +36,14 @@ const OrderSchema = new Schema(
     isPaid: { type: Boolean, required: true, default: false },
     paidAt: { type: String },
     transactionId: { type: String },
+    orderState: {
+      type: String,
+      enum: {
+        values: ['pending', 'processing', 'completed'],
+        message: '{VALUE} is not a valid state',
+      },
+      default: 'pending',
+    },
   },
   { timestamps: true }
 );

@@ -136,7 +136,7 @@ const RegisterPage = () => {
                 }
                 passHref
               >
-                <Link underline='always'>¿ya tienes cuenta?</Link>
+                <Link underline='always'>Already have an account?</Link>
               </NextLink>
             </Grid>
           </Grid>

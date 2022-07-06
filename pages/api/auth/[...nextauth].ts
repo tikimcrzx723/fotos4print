@@ -16,17 +16,12 @@ export default NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
       authorization: {
         params: {
-          prompt: "consent",
-          access_type: "offline",
-          response_type: "code"
-        }
-      }
+          prompt: 'consent',
+          access_type: 'offline',
+          response_type: 'code',
+        },
+      },
     }),
-    // GoogleProvider({
-    //   clientId: '',
-    //   clientSecret: '',
-    //
-    // ...add more providers here
     Credentials({
       name: 'Custom Login',
       credentials: {

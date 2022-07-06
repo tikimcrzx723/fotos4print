@@ -17,7 +17,7 @@ export const isEmail = (email: string): string | undefined => {
 export const isValidImage = (file: string): boolean => {
   const match = String(file)
     .toLowerCase()
-    .match('^.*.(jpg|JPG|gif|GIF|doc|DOC|pdf|PDF)$');
+    .match('^.*.(jpg|JPG|gif|GIF|png|PNG)$');
 
   return !!match;
 };

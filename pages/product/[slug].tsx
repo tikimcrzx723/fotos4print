@@ -16,7 +16,7 @@ interface Props {
 const ProductPage: NextPage<Props> = ({ product }) => {
   const router = useRouter();
   const [priceChange, setPrice] = useState(product.price[0].price);
-  const { addProductToCart } = useContext(CartContext);
+  const { addProductToCart, updateCartQuantity } = useContext(CartContext);
   const sizes: any = product.price.map((detail) => {
     return detail.size;
   });
@@ -47,6 +47,7 @@ const ProductPage: NextPage<Props> = ({ product }) => {
     if (!tempCartProduct.size) return;
     tempCartProduct.price = priceChange;
     tempCartProduct.userImages = [];
+    tempCartProduct.quantity = 0;
 
     addProductToCart(tempCartProduct);
     router.push('/cart');
@@ -70,7 +71,7 @@ const ProductPage: NextPage<Props> = ({ product }) => {
 
             {/* Quantity */}
             <Box sx={{ my: 2 }}>
-              <Typography variant='subtitle2'>Cantidad</Typography>
+              <Typography variant='subtitle2'>Quantity</Typography>
               <SizeSelector
                 sizes={sizes}
                 selectedSize={tempCartProduct.size}

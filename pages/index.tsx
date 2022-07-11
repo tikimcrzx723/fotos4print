@@ -12,8 +12,8 @@ const HomePage: NextPage = () => {
 
   return (
     <ShopLayout
-      title={'Studio-Sueno - Home'}
-      pageDescription={'Encuentra las mejores fotos'}
+      title={'Fotos4Print - Home'}
+      pageDescription={'Print all your memories and photos with the best quality.'}
     >
       <Box sx={{ textAlign: 'center' }}>
         <Typography variant='h1' component='h1'>

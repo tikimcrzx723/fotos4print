@@ -10,7 +10,7 @@ export const FullScreenLoading = () => {
       height='calc(100vh - 200px)'
     >
       <Typography sx={{ mb: 3 }} variant='h2' fontWeight={200}>
-        Cargando...
+        Loading...
       </Typography>
       <CircularProgress thickness={2} />
     </Box>

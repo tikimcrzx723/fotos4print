@@ -63,7 +63,7 @@ const RegisterPage = () => {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <Typography variant='h1' component='h1'>
-                Crear Cuenta
+                Create Account
               </Typography>
               <Chip
                 label='No reconocemos ese usuario / contraseña'
@@ -75,12 +75,12 @@ const RegisterPage = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                label='Nombre Completo'
+                label='Fullname'
                 variant='filled'
                 fullWidth
                 {...register('name', {
-                  required: 'El campo es requerido',
-                  minLength: { value: 2, message: 'Mínimo 2 caracteres' },
+                  required: 'This field is required',
+                  minLength: { value: 2, message: 'Must have a minimum of 2 characters' },
                 })}
                 error={!!errors.name}
                 helperText={errors.name?.message}
@@ -89,11 +89,11 @@ const RegisterPage = () => {
             <Grid item xs={12}>
               <TextField
                 type='email'
-                label='Correo'
+                label='Email'
                 variant='filled'
                 fullWidth
                 {...register('email', {
-                  required: 'El campo es requerido',
+                  required: 'This field is required',
                   validate: validations.isEmail,
                 })}
                 error={!!errors.email}
@@ -102,7 +102,7 @@ const RegisterPage = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                label='Contraseña'
+                label='Password'
                 type='password'
                 variant='filled'
                 fullWidth
@@ -123,7 +123,7 @@ const RegisterPage = () => {
                 size='large'
                 fullWidth
               >
-                Ingresar
+                Sign Up
               </Button>
             </Grid>
 

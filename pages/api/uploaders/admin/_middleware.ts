@@ -1,10 +1,10 @@
-import { NextFetchEvent, NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
+import { NextFetchEvent, NextRequest, NextResponse } from 'next/server';
 
 export async function middleware(req: NextRequest | any, ev: NextFetchEvent) {
   const session: any = await getToken({
     req,
-    secret: process.env.NEXTAUTH_SECRET,
+    secret: process.env.NEXTAUTH_URL,
   });
 
   if (!session) {
@@ -20,7 +20,7 @@ export async function middleware(req: NextRequest | any, ev: NextFetchEvent) {
     }
   }
 
-  const validRoles = ['admin', 'super-user', 'SEO'];
+  const validRoles = ['root', 'admin'];
 
   if (!validRoles.includes(session.user.role)) {
     try {

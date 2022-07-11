@@ -17,9 +17,9 @@ const SearchPage: NextPage<Props> = ({ products, foundProducts, query }) => {
   return (
     <ShopLayout
       title={'Studio-Sueno - Search'}
-      pageDescription={'Encuentra las mejores fotos'}
+      pageDescription={'Find the best photos'}
     >
-      <Typography variant='h1' component='h1'>
+      <Typography textAlign='center' variant='h1' component='h1'>
         Find Products
       </Typography>
       {foundProducts ? (
@@ -33,14 +33,9 @@ const SearchPage: NextPage<Props> = ({ products, foundProducts, query }) => {
         </Typography>
       ) : (
         <>
-          <Box display='flex'>
-            <Typography variant='h2' sx={{ mb: 1 }}>
-              We did not find any product with this description
-            </Typography>
-            <Typography variant='h2' sx={{ ml: 1 }} textTransform='capitalize'>
-              {query}
-            </Typography>
-          </Box>
+          <Typography textAlign='center' variant='h2' sx={{ mb: 1 }}>
+            We did not find any product with this description {query}
+          </Typography>
         </>
       )}
 

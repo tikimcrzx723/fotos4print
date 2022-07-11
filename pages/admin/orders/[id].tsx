@@ -65,9 +65,7 @@ const OrderPage: NextPage<Props> = ({ order }) => {
               <Divider sx={{ my: 1 }} />
 
               <Box display='flex' justifyContent='space-between'>
-                <Typography variant='subtitle1'>
-                  Dirección de entrega
-                </Typography>
+                <Typography variant='subtitle1'>Delivery Address</Typography>
               </Box>
 
               <Typography>

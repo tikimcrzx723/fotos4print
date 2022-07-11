@@ -411,7 +411,7 @@ const ProductAdminPage: NextPage<PropsWithChildren<Props>> = ({ product }) => {
                           color='error'
                           onClick={() => onDeleteImage(img)}
                         >
-                          Borrar
+                          Delete
                         </Button>
                       </CardActions>
                     </Card>

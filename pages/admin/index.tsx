@@ -28,7 +28,6 @@ const DashboardPage = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-
       setRefreshIn((refreshIn) => (refreshIn > 0 ? refreshIn - 1 : 30));
     }, 1000);
     return () => clearInterval(interval);
@@ -56,37 +55,37 @@ const DashboardPage = () => {
   return (
     <AdminLayout
       title='Dashboard'
-      subTitle='Estadisticas generales'
+      subTitle='General statistics'
       icon={<DashboardOutlined />}
     >
-      <Grid container spacing={numberOfOrders}>
+      <Grid container spacing={4}>
         <SummaryTile
           title={numberOfOrders}
-          subTitle='Ordenes Totales'
+          subTitle='Total Orders'
           icon={<CreditCardOutlined color='secondary' sx={{ fontSize: 40 }} />}
         />
 
         <SummaryTile
           title={paidOrders}
-          subTitle='Ordenes Pagadas'
+          subTitle='Paid Orders'
           icon={<AttachMoneyOutlined color='success' sx={{ fontSize: 40 }} />}
         />
 
         <SummaryTile
           title={notPaidOrders}
-          subTitle='Ordenes Pendientes'
+          subTitle='Pending Orders'
           icon={<CreditCardOffOutlined color='error' sx={{ fontSize: 40 }} />}
         />
 
         <SummaryTile
           title={numberOfClients}
-          subTitle='Clientes'
+          subTitle='Clients'
           icon={<GroupOutlined color='primary' sx={{ fontSize: 40 }} />}
         />
 
         <SummaryTile
           title={numberOfProducts}
-          subTitle='Productos'
+          subTitle='Products'
           icon={<CategoryOutlined color='warning' sx={{ fontSize: 40 }} />}
         />
 
@@ -111,7 +110,7 @@ const DashboardPage = () => {
 
         <SummaryTile
           title={refreshIn}
-          subTitle='Actualización en:'
+          subTitle='Updating in:'
           icon={<AccessTimeOutlined color='secondary' sx={{ fontSize: 40 }} />}
         />
       </Grid>

@@ -20,6 +20,7 @@ import { ItemCounter } from '../ui';
 import { CartContext } from '../../context';
 import { ICartProduct, IOrderItem } from '../../interfaces';
 import { IUserImage } from '../../interfaces/cart';
+import { coverterBase64 } from '../../libs';
 
 interface Props {
   open: boolean;
@@ -41,6 +42,7 @@ export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
   const [saveImagesOrderUser, setSaveImagesOrderUser] = useState([]);
   const { updateCartQuantity } = useContext(CartContext);
   const [imagesForUser, setImagesForUser] = useState([]);
+  const [s3Uploaded, sets3Uploaded] = useState<any>();
 
   const updateQuantiry = (quantity: number) => {};
   // const userSaveImage: any = [];
@@ -74,6 +76,32 @@ export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
       const fileUploaded = [];
       for (const file of target.files) {
         const image = URL.createObjectURL(file);
+        const decode: any = await coverterBase64(file);
+        const base64: any = decode.replace('data', '').replace(/^.+,/, '');
+        let base64Data = Buffer.from(base64, 'base64') as any;
+
+        //     base: any;
+        // path: any;
+        // fileName: any;
+        // fileType: any;
+        // extension: any;
+        // const base64 = await getBase64(file);
+        // let upload = {
+        //   base64,
+        //   path: 'orders',
+        //   fileName: file.name,
+        //   fileType: file.type.split('/')[0],
+        //   extension: file.type.split('/')[1],
+        // };
+
+        // const formData = new FormData();
+        // formData.append('file', file);
+        // const { data } = await appApi.post<{ message: string }>(
+        //   '/user/upuser',
+        //   { name: file.name, type: file.type, base: base64 }
+        // );
+        // console.log(data);
+
         // console.log(file.size);
         // console.log(formData);
 
@@ -81,12 +109,32 @@ export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
         //   `/orders/send-images`,
         //   formData
         // );
+
+        //   fileName: file.name,
+        //   fileType: file.type.split('/')[0],
+        //   extension: file.type.split('/')[1],
+        const sendDataFile = {
+          base64,
+          path: 'orders',
+          fileName: 'anime',
+          fileType: file.type.split('/')[0],
+          extension: file.type.split('/')[1],
+        };
+
+        const { data } = await appApi.post<{ message: string }>(
+          `/uploaders/clients/images`,
+          sendDataFile
+        );
+
+        console.log(data);
+
         images.push(image);
         fileUploaded.push(file);
       }
 
       setImagesUser(images as any);
       setSaveImagesOrderUser(fileUploaded as any);
+      console.log(imagesForUser);
     } catch (error) {
       console.log({ error });
     }
@@ -100,18 +148,19 @@ export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
     product: ICartProduct,
     newQuantityValue: number
   ) => {
-    uploadImages();
+    // uploadImages();
     product.quantity = newQuantityValue;
-    // product.userImages = userSaveImage;
-    updateCartQuantity(product, imagesForUser as IUserImage[]);
+    product.userImages = imagesForUser;
+    updateCartQuantity(product);
   };
 
   return (
     <div>
-      <Button color='secondary' variant='outlined' onClick={handleClickOpen}>
-        Add Images
-        {imagesUser.length}
-      </Button>
+      <Box marginTop={2}>
+        <Button color='secondary' variant='outlined' onClick={handleClickOpen}>
+          Add your Images
+        </Button>
+      </Box>
       <Dialog
         fullScreen={fullScreen}
         open={open}

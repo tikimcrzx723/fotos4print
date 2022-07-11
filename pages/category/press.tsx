@@ -9,8 +9,8 @@ const WomenPage: NextPage = () => {
   const { products, isLoading } = useProducts('products?type=press');
   return (
     <ShopLayout
-      title='Studio-Sueno - Mujeres'
-      pageDescription='Encuentra los mejores productos de Studio-Sueno para ellas'
+      title='Studio-Sueno - Press'
+      pageDescription='Find the most important for the presentation of your business.'
     >
       <Box sx={{ textAlign: 'center' }}>
         <Typography variant='h1' component='h1'>

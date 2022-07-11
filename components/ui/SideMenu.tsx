@@ -89,7 +89,7 @@ export const SideMenu = () => {
                 <ListItemIcon>
                   <ConfirmationNumberOutlined />
                 </ListItemIcon>
-                <ListItemText primary={'Mis Ordenes'} />
+                <ListItemText primary={'My Orders'} />
               </ListItem>
             </>
           )}
@@ -102,7 +102,7 @@ export const SideMenu = () => {
             <ListItemIcon>
               <PhotoCameraOutlined />
             </ListItemIcon>
-            <ListItemText primary={'Photo'} />
+            <ListItemText primary={'Photos'} />
           </ListItem>
 
           <ListItem
@@ -113,7 +113,7 @@ export const SideMenu = () => {
             <ListItemIcon>
               <CardGiftcardOutlined />
             </ListItemIcon>
-            <ListItemText primary={'Gift'} />
+            <ListItemText primary={'Gifts'} />
           </ListItem>
 
           <ListItem
@@ -143,7 +143,7 @@ export const SideMenu = () => {
               <ListItemIcon>
                 <LoginOutlined />
               </ListItemIcon>
-              <ListItemText primary={'Salir'} />
+              <ListItemText primary={'Log Out'} />
             </ListItem>
           ) : (
             <ListItem
@@ -173,20 +173,20 @@ export const SideMenu = () => {
                 <ListItemIcon>
                   <CategoryOutlined />
                 </ListItemIcon>
-                <ListItemText primary={'Productos'} />
+                <ListItemText primary={'Products'} />
               </ListItem>
               <ListItem button onClick={() => navigateTo('/admin/orders')}>
                 <ListItemIcon>
                   <ConfirmationNumberOutlined />
                 </ListItemIcon>
-                <ListItemText primary={'Ordenes'} />
+                <ListItemText primary={'Orders'} />
               </ListItem>
 
               <ListItem button onClick={() => navigateTo('/admin/users')}>
                 <ListItemIcon>
                   <AdminPanelSettings />
                 </ListItemIcon>
-                <ListItemText primary={'Usuarios'} />
+                <ListItemText primary={'Users'} />
               </ListItem>
             </>
           )}

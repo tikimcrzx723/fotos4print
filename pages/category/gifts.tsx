@@ -9,8 +9,8 @@ const MenPage: NextPage = () => {
   const { products, isLoading } = useProducts('products?type=gift');
   return (
     <ShopLayout
-      title='Studio-Sueno - Hombres'
-      pageDescription='Encuentra los mejores productos de Studio-Sueno para ellos'
+      title='Studio-Sueno - Gifts'
+      pageDescription='Find the best gifts for those special people'
     >
       <Box sx={{ textAlign: 'center' }}>
         <Typography variant='h1' component='h1'>

@@ -46,7 +46,7 @@ const OrderPage: NextPage<PropsWithChildren<Props>> = ({ order }) => {
 
   const onOrderCompleted = async (details: OrderResponseBody) => {
     if (details.status !== 'COMPLETED') {
-      return alert('No hay pago en Paypal');
+      return alert('No Paypal payment');
     }
 
     setIsPaying(true);
@@ -67,8 +67,8 @@ const OrderPage: NextPage<PropsWithChildren<Props>> = ({ order }) => {
 
   return (
     <ShopLayout
-      title='Resumen de la orden'
-      pageDescription='Resumen de la Orden'
+      title='Order summary'
+      pageDescription='Order summary'
     >
       <Typography variant='h1' component='h1'>
         Orden: {order._id}
@@ -76,7 +76,7 @@ const OrderPage: NextPage<PropsWithChildren<Props>> = ({ order }) => {
       {order.isPaid ? (
         <Chip
           sx={{ my: 2 }}
-          label='Orden ya fue pagada'
+          label='Order has been paid'
           variant='outlined'
           color='success'
           icon={<CreditScoreOutlined />}
@@ -84,7 +84,7 @@ const OrderPage: NextPage<PropsWithChildren<Props>> = ({ order }) => {
       ) : (
         <Chip
           sx={{ my: 2 }}
-          label='Pendiente de pago'
+          label='Pending payment'
           variant='outlined'
           color='error'
           icon={<CreditCardOffOutlined />}
@@ -104,7 +104,7 @@ const OrderPage: NextPage<PropsWithChildren<Props>> = ({ order }) => {
               </Typography>
               <Divider sx={{ my: 1 }} />
 
-              <Typography variant='subtitle1'>Dirección de Entrega</Typography>
+              <Typography variant='subtitle1'>Delivery Address</Typography>
               <Typography>
                 {shippingAddress.firstName} {shippingAddress.lastName}
               </Typography>

@@ -62,12 +62,9 @@ const SummaryPage = () => {
   } = shippingAddress;
 
   return (
-    <ShopLayout
-      title='Resumen de orden'
-      pageDescription={'Resumen de la orden'}
-    >
+    <ShopLayout title='Order Summary' pageDescription={'Order Summary'}>
       <Typography variant='h1' component='h1'>
-        Resumen de la orden
+        Order Summary
       </Typography>
 
       <Grid container>
@@ -78,17 +75,15 @@ const SummaryPage = () => {
           <Card className='summary-card'>
             <CardContent>
               <Typography variant='h2'>
-                Resumen ({numberOfItems}{' '}
+                Summary ({numberOfItems}{' '}
                 {numberOfItems === 1 ? 'producto' : 'productos'})
               </Typography>
               <Divider sx={{ my: 1 }} />
 
               <Box display='flex' justifyContent='space-between'>
-                <Typography variant='subtitle1'>
-                  Dirección de entrega
-                </Typography>
+                <Typography variant='subtitle1'>Delivery Address</Typography>
                 <NextLink href='/checkout/address' passHref>
-                  <Link underline='always'>Editar</Link>
+                  <Link underline='always'>Edit</Link>
                 </NextLink>
               </Box>
 
@@ -110,7 +105,7 @@ const SummaryPage = () => {
 
               <Box display='flex' justifyContent='end'>
                 <NextLink href='/cart' passHref>
-                  <Link underline='always'>Editar</Link>
+                  <Link underline='always'>Edit</Link>
                 </NextLink>
               </Box>
 
@@ -124,7 +119,7 @@ const SummaryPage = () => {
                   onClick={onCreateOrder}
                   disabled={isPosting}
                 >
-                  Confirmar Orden
+                  Confirm Order
                 </Button>
 
                 <Chip

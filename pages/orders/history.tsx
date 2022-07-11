@@ -2,7 +2,7 @@ import NextLink from 'next/link';
 import { GetServerSideProps, NextPage } from 'next';
 import { getSession } from 'next-auth/react';
 
-import { Chip, Grid, Link, Typography } from '@mui/material';
+import { Box, Chip, Grid, Link, Typography } from '@mui/material';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 
 import { ShopLayout } from '../../components/layouts';
@@ -12,30 +12,30 @@ import { IOrder } from '../../interfaces';
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 100 },
-  { field: 'fullname', headerName: 'Nombre Completo', width: 300 },
+  { field: 'fullname', headerName: 'Full Name', width: 300 },
 
   {
     field: 'paid',
-    headerName: 'Pagada',
-    description: 'Muestra información si está pagado',
+    headerName: 'Order Status',
+    description: 'Shows Information if Paid',
     width: 200,
     renderCell: (params: GridValueGetterParams) => {
       return params.row.paid ? (
-        <Chip color='success' label='Pagada' variant='outlined' />
+        <Chip color='success' label='Paid' variant='outlined' />
       ) : (
-        <Chip color='error' label='No Pagada' variant='outlined' />
+        <Chip color='error' label='Unpaid' variant='outlined' />
       );
     },
   },
   {
     field: 'orden',
-    headerName: 'Ver orden',
+    headerName: 'Orders',
     width: 200,
     sortable: false,
     renderCell: (params: GridValueGetterParams) => {
       return (
         <NextLink href={`/orders/${params.row.orderId}`} passHref>
-          <Link underline='always'>Ver Orden</Link>
+          <Link underline='always'>View Order</Link>
         </NextLink>
       );
     },
@@ -55,13 +55,12 @@ const HistoryPage: NextPage<PropsWithChildren<Props>> = ({ orders }) => {
   }));
 
   return (
-    <ShopLayout
-      title='Historial de ordenes'
-      pageDescription='Historial de Ordenes del cliente'
-    >
-      <Typography variant='h1' component='h1'>
-        Historial de ordenes
-      </Typography>
+    <ShopLayout title='Order History' pageDescription='Customer Order History'>
+      <Box textAlign='center' marginBottom={2}>
+        <Typography variant='h1' component='h1'>
+          Order History
+        </Typography>
+      </Box>
 
       <Grid container className='fadeIn'>
         <Grid item xs={12} sx={{ height: 650, width: '100%' }}>

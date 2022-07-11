@@ -25,7 +25,7 @@ const columns: GridColDef[] = [
   },
   {
     field: 'title',
-    headerName: 'Titulo',
+    headerName: 'title',
     width: 230,
     renderCell: ({ row }: GridValueGetterParams) => {
       return (
@@ -53,8 +53,8 @@ const ProductsPage = () => {
 
   return (
     <AdminLayout
-      title={`Productos (${data?.length})`}
-      subTitle={'Mantenimiento de productos'}
+      title={`Products (${data?.length})`}
+      subTitle={'Maintenance Of Products'}
       icon={<CategoryOutlined />}
     >
       <Box display='flex' justifyContent='end' sx={{ mb: 2 }}>
@@ -63,7 +63,7 @@ const ProductsPage = () => {
           color='secondary'
           href='/admin/products/new'
         >
-          Crear Producto
+          Create new Product
         </Button>
       </Box>
       <Grid container className='fadeIn'>

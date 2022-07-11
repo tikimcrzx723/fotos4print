@@ -53,7 +53,9 @@ export const ProductCard: FC<PropsWithChildren<Props>> = ({ product }) => {
         sx={{ mt: 1, display: isImageLoaded ? 'block' : 'none' }}
         className='fadeIn'
       >
-        <Typography fontWeight={700}>{product.title}</Typography>
+        <Typography textAlign='center' fontWeight={700} variant='h6'>
+          {product.title}
+        </Typography>
       </Box>
     </Grid>
   );

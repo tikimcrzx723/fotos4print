@@ -47,6 +47,7 @@ const ProductPage: NextPage<Props> = ({ product }) => {
     if (!tempCartProduct.size) return;
     tempCartProduct.price = priceChange;
     tempCartProduct.userImages = [];
+    tempCartProduct.tempImages = [];
     tempCartProduct.quantity = 0;
 
     addProductToCart(tempCartProduct);

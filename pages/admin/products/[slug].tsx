@@ -40,6 +40,8 @@ import { IProduct } from '../../../interfaces';
 import { dbProducts } from '../../../database';
 import { appApi } from '../../../api';
 import { Product } from '../../../models';
+import { converters } from '../../../libs';
+import { ShowListImages } from '../../../components/uploads';
 
 const validTypes = ['photo', 'press', 'gift', 'canva'];
 
@@ -63,8 +65,6 @@ const ProductAdminPage: NextPage<PropsWithChildren<Props>> = ({ product }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [newTagValue, setNewTagValue] = useState('');
   const [isSaving, setIsSaving] = useState(false);
-  const [details, setDetails] = useState([]);
-  const [counter, setCounter] = useState(0);
 
   const {
     register,
@@ -127,15 +127,26 @@ const ProductAdminPage: NextPage<PropsWithChildren<Props>> = ({ product }) => {
     if (!target.files || target.files.length === 0) {
       return;
     }
+    let i = 1;
 
     try {
       for (const file of target.files) {
         const formData = new FormData();
         formData.append('file', file);
+        const base64: any = await converters.returnBase64(file);
+
+        const sendDataFile = {
+          base64,
+          path: getValues('type'),
+          fileName: `${getValues('title')}-${i}`,
+          fileType: file.type.split('/')[0],
+          extension: file.type.split('/')[1],
+        };
+        i++;
 
         const { data } = await appApi.post<{ message: string }>(
-          `/admin/uploads`,
-          formData
+          `/uploaders/admin/images`,
+          sendDataFile
         );
         setValue('images', [...getValues('images'), data.message], {
           shouldValidate: true,
@@ -395,29 +406,13 @@ const ProductAdminPage: NextPage<PropsWithChildren<Props>> = ({ product }) => {
                 }}
               />
 
-              <Grid container spacing={2}>
-                {getValues('images').map((img) => (
-                  <Grid item xs={4} sm={3} key={img}>
-                    <Card>
-                      <CardMedia
-                        component='img'
-                        className='fadeIn'
-                        image={img}
-                        alt={img}
-                      />
-                      <CardActions>
-                        <Button
-                          fullWidth
-                          color='error'
-                          onClick={() => onDeleteImage(img)}
-                        >
-                          Delete
-                        </Button>
-                      </CardActions>
-                    </Card>
-                  </Grid>
-                ))}
-              </Grid>
+              <ShowListImages
+                images={getValues('images')}
+                spacing={2}
+                sm={3}
+                xs={4}
+                onDeleteImage={onDeleteImage}
+              />
             </Box>
           </Grid>
         </Grid>

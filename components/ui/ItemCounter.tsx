@@ -28,7 +28,7 @@ export const ItemCounter: FC<PropsWithChildren<Props>> = ({
     updatedQuantity(currentValue + 1);
   };
   return (
-    <Box display='flex' alignItems='center'>
+    <Box marginLeft={3} display='flex' alignItems='center'>
       <IconButton onClick={() => addOrRemove(-1)}>
         <RemoveCircleOutline />
       </IconButton>

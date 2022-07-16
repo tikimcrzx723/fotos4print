@@ -26,7 +26,7 @@ export const OrderSummary: FC<PropsWithChildren<Props>> = ({ orderValues }) => {
       </Grid>
       <Grid item xs={6} display='flex' justifyContent='end'>
         <Typography>
-          {summaryValues.numberOfItems} producto
+          {summaryValues.numberOfItems} product
           {summaryValues.numberOfItems > 1 ? 's' : ''}
         </Typography>
       </Grid>

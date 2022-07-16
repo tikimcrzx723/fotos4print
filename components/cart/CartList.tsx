@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import { CartContext } from '../../context/cart';
 import { ICartProduct, IOrderItem } from '../../interfaces';
-import { UploadImageByCart } from '../products';
+import { UploadImageByCart } from '../uploads/UploadImageByCart';
 
 interface Props {
   editable?: boolean;
@@ -45,11 +45,10 @@ export const CartList: FC<PropsWithChildren<Props>> = ({
   };
 
   const productToShow = products ? products : cart;
-  
 
   return (
     <>
-      {productToShow.map((product) => (
+      {productToShow.map((product, index) => (
         <Grid
           container
           spacing={2}
@@ -78,10 +77,8 @@ export const CartList: FC<PropsWithChildren<Props>> = ({
               </Typography>
               {/* Conditional */}
               {editable ? (
-                // <Button sx={{ mt: 2 }} color='secondary'>
-                //   Add your print images
-                // </Button>
                 <UploadImageByCart
+                  index={index}
                   open={openLoadImage}
                   product={product}
                   handleClickOpen={handleClickOpen}
@@ -89,7 +86,7 @@ export const CartList: FC<PropsWithChildren<Props>> = ({
                 />
               ) : (
                 <Typography variant='h5'>
-                  {product.quantity} producto{product.quantity > 1 ? 's' : ''}
+                  {product.quantity} product{product.quantity > 1 ? 's' : ''}
                 </Typography>
               )}
             </Box>

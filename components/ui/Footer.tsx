@@ -25,7 +25,12 @@ export const Footer = () => {
                 <Link href='/' color='inherit'>
                   <FacebookOutlined />
                   <Instagram />
-                  <Image src={`/tiktok-white.png`} width={24} height={24} />
+                  <Image
+                    src={`/tiktok-white.png`}
+                    width={24}
+                    height={24}
+                    alt='tiktok'
+                  />
                 </Link>
               </Box>
             </Grid>

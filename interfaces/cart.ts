@@ -8,6 +8,7 @@ export interface ICartProduct {
   title: string;
   quantity: number;
   userImages?: IUserImage[];
+  tempImages?: string[];
 }
 
 export interface IUserImage {

@@ -21,7 +21,7 @@ import { CartList, OrderSummary } from '../../components/cart';
 
 const SummaryPage = () => {
   const router = useRouter();
-  const { shippingAddress, numberOfItems, createOrder } =
+  const { shippingAddress, numberOfItems, createOrder, updateCartQuantity } =
     useContext(CartContext);
 
   const [isPosting, setIsPosting] = useState(false);
@@ -76,7 +76,7 @@ const SummaryPage = () => {
             <CardContent>
               <Typography variant='h2'>
                 Summary ({numberOfItems}{' '}
-                {numberOfItems === 1 ? 'producto' : 'productos'})
+                {numberOfItems === 1 ? 'product' : 'products'})
               </Typography>
               <Divider sx={{ my: 1 }} />
 

@@ -7,13 +7,13 @@ import {
   Button,
   Card,
   CardContent,
-  Chip,
   Divider,
   Grid,
   Typography,
 } from '@mui/material';
 import { CartList, OrderSummary } from '../../components/cart';
 import { ShopLayout } from '../../components/layouts';
+import { AddPhotoAlternateOutlined } from '@mui/icons-material';
 
 const CartPage = () => {
   const { isLoaded, cart } = useContext(CartContext);
@@ -60,7 +60,16 @@ const CartPage = () => {
                     Checkout
                   </Button>
                 ) : (
-                  <Chip sx={{ my: 2 }} label='Please upload your images' />
+                  <>
+                    <Grid
+                      container
+                      display='flex'
+                      sx={{ alignItems: 'center' }}
+                    >
+                      <AddPhotoAlternateOutlined />
+                      <Typography ml={2}>Please Upload Images</Typography>
+                    </Grid>
+                  </>
                 )}
               </Box>
             </CardContent>

@@ -66,12 +66,9 @@ const OrderPage: NextPage<PropsWithChildren<Props>> = ({ order }) => {
   };
 
   return (
-    <ShopLayout
-      title='Order summary'
-      pageDescription='Order summary'
-    >
+    <ShopLayout title='Order summary' pageDescription='Order summary'>
       <Typography variant='h1' component='h1'>
-        Orden: {order._id}
+        Order: {order._id}
       </Typography>
       {order.isPaid ? (
         <Chip

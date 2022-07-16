@@ -23,7 +23,7 @@ const DashboardPage = () => {
       refreshInterval: 30 * 1000,
     }
   );
-
+  
   const [refreshIn, setRefreshIn] = useState(30);
 
   useEffect(() => {

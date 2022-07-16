@@ -4,7 +4,6 @@ import {
   ICartProduct,
   IOrder,
   ShippingAddress,
-  IUserImage,
 } from '../../interfaces';
 import { CartContext, cartReducer } from './';
 import Cookies from 'js-cookie';

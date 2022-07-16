@@ -30,6 +30,7 @@ export interface IOrderItem {
   image: string;
   price: number;
   userImages?: IUserImages[];
+  tempImages?: string[];
 }
 
 interface IUserImages {

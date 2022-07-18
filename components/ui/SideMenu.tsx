@@ -153,7 +153,7 @@ export const SideMenu = () => {
               <ListItemIcon>
                 <VpnKeyOutlined />
               </ListItemIcon>
-              <ListItemText primary={'Ingresar'} />
+              <ListItemText primary={'Login'} />
             </ListItem>
           )}
 

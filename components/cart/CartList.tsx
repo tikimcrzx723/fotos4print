@@ -48,7 +48,7 @@ export const CartList: FC<PropsWithChildren<Props>> = ({
 
   return (
     <>
-      {productToShow.map((product, index) => (
+      {productToShow.map((product) => (
         <Grid
           container
           spacing={2}
@@ -78,7 +78,6 @@ export const CartList: FC<PropsWithChildren<Props>> = ({
               {/* Conditional */}
               {editable ? (
                 <UploadImageByCart
-                  index={index}
                   open={openLoadImage}
                   product={product}
                   handleClickOpen={handleClickOpen}

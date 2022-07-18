@@ -23,7 +23,6 @@ import { ShowListImages } from './ShowListImages';
 
 interface Props {
   open: boolean;
-  index: number;
   product: IOrderItem | ICartProduct;
   handleClickOpen: () => void;
   handleClose: () => void;
@@ -33,7 +32,6 @@ export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
   open,
   product,
   handleClickOpen,
-  index,
   handleClose,
 }) => {
   const theme = useTheme();
@@ -76,6 +74,10 @@ export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
     setViewImage(viewImage.filter((img) => img !== image));
     if (product.quantity > 0) {
       product.quantity = product.quantity - 1;
+      product.tempImages = viewImage;
+      if (sendFileS3) {
+        
+      }
       updateCartQuantity(product as ICartProduct);
     }
   };
@@ -143,7 +145,7 @@ export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
               type='file'
               multiple
               onChange={onFilesSelected}
-              accept='.png, .jpg, .jpge, .JPGE'
+              accept='.png, .jpg, .jpge, .JPGE, .pdf'
               style={{ display: 'none' }}
             />
             <ShowListImages

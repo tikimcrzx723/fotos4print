@@ -29,7 +29,7 @@ const ProductPage: NextPage<Props> = ({ product }) => {
     size: product.price[0].size,
     slug: product.slug,
     title: product.title,
-    quantity: 1,
+    quantity: 0,
   });
 
   const onSelectedSize = (size: string) => {
@@ -48,7 +48,6 @@ const ProductPage: NextPage<Props> = ({ product }) => {
     tempCartProduct.price = priceChange;
     tempCartProduct.userImages = [];
     tempCartProduct.tempImages = [];
-    tempCartProduct.quantity = 0;
 
     addProductToCart(tempCartProduct);
     router.push('/cart');

@@ -40,9 +40,6 @@ const uploadImageUser = async (req: NextApiRequest, res: NextApiResponse) => {
     session.email.split('@')[1]
   }`;
   const fileName = uuid();
-  console.log(basecv);
-
-  console.log(session);
 
   const image = await imageUpload.uploadFilesToStorage(
     basecv,

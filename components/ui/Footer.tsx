@@ -22,16 +22,28 @@ export const Footer = () => {
                 <Typography variant='h6'>Follow us on:</Typography>
               </Box>
               <Box>
-                <Link href='/' color='inherit'>
+                <a
+                  href='https://www.facebook.com/omar.fotostudio'
+                  target='_blank'
+                  rel='noreferrer'
+                >
                   <FacebookOutlined />
-                  <Instagram />
+                </a>
+                <Link href='' target='_blank' rel='noreferrer'>
+                  <Instagram color='secondary' />
+                </Link>
+                <a
+                  href='https://www.tiktok.com/@fotostudioelsueno'
+                  target='_blank'
+                  rel='noreferrer'
+                >
                   <Image
                     src={`/tiktok-white.png`}
                     width={24}
                     height={24}
                     alt='tiktok'
                   />
-                </Link>
+                </a>
               </Box>
             </Grid>
             <Grid item xs={12} sm={4} textAlign='center'>
@@ -39,9 +51,7 @@ export const Footer = () => {
                 <Typography variant='h6'>Office:</Typography>
               </Box>
               <Box>
-                <Link href='/' color='inherit'>
-                  503-990-4525
-                </Link>
+                <Typography variant='body1'>503-990-4525</Typography>
               </Box>
             </Grid>
           </Grid>

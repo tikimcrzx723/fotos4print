@@ -12,7 +12,7 @@ const columns: GridColDef[] = [
   { field: 'total', headerName: 'Monto total', width: 150 },
   {
     field: 'isPaid',
-    headerName: 'Pagada',
+    headerName: 'Paid',
     renderCell: ({ row }: GridValueGetterParams) => {
       return row.isPaid ? (
         <Chip variant='outlined' label='Pagada' color='success' />
@@ -38,7 +38,7 @@ const columns: GridColDef[] = [
       );
     },
   },
-  { field: 'createdAt', headerName: 'Creada en', width: 300 },
+  { field: 'createdAt', headerName: 'Created At', width: 300 },
 ];
 
 const OrdersPage = () => {

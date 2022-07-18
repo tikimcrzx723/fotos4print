@@ -52,14 +52,14 @@ export const Navbar = () => {
           }}
           className='fadeIn'
         >
-          <NextLink href='/category/photo' passHref>
+          <NextLink href='/category/photos' passHref>
             <Link>
               <Button color={asPath === '/category/photo' ? 'primary' : 'info'}>
                 Photos
               </Button>
             </Link>
           </NextLink>
-          <NextLink href='/category/gift' passHref>
+          <NextLink href='/category/gifts' passHref>
             <Link>
               <Button color={asPath === '/category/gift' ? 'primary' : 'info'}>
                 Gifts
@@ -70,13 +70,6 @@ export const Navbar = () => {
             <Link>
               <Button color={asPath === '/category/press' ? 'primary' : 'info'}>
                 Press
-              </Button>
-            </Link>
-          </NextLink>
-          <NextLink href='/category/canva' passHref>
-            <Link>
-              <Button color={asPath === '/category/canva' ? 'primary' : 'info'}>
-                Canvas
               </Button>
             </Link>
           </NextLink>

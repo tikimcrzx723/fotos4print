@@ -97,7 +97,7 @@ export const SideMenu = () => {
           <ListItem
             button
             sx={{ display: { xs: '', sm: 'none' } }}
-            onClick={() => navigateTo('/category/Photo')}
+            onClick={() => navigateTo('/category/photos')}
           >
             <ListItemIcon>
               <PhotoCameraOutlined />
@@ -108,7 +108,7 @@ export const SideMenu = () => {
           <ListItem
             button
             sx={{ display: { xs: '', sm: 'none' } }}
-            onClick={() => navigateTo('/category/gift')}
+            onClick={() => navigateTo('/category/gifts')}
           >
             <ListItemIcon>
               <CardGiftcardOutlined />
@@ -125,17 +125,6 @@ export const SideMenu = () => {
               <DomainOutlined />
             </ListItemIcon>
             <ListItemText primary={'Press'} />
-          </ListItem>
-
-          <ListItem
-            button
-            sx={{ display: { xs: '', sm: 'none' } }}
-            onClick={() => navigateTo('/category/canva')}
-          >
-            <ListItemIcon>
-              <ColorLensOutlined />
-            </ListItemIcon>
-            <ListItemText primary={'Canvas'} />
           </ListItem>
 
           {isLoggedIn ? (

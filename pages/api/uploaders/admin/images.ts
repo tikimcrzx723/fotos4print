@@ -39,8 +39,6 @@ const uploadImageUser = async (req: NextApiRequest, res: NextApiResponse) => {
   const absolutePath = `products/${path}`;
   const fileName = uuid();
 
-  console.log(session);
-
   const image = await imageUpload.uploadFilesToStorage(
     basecv,
     absolutePath,

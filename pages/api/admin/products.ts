@@ -9,6 +9,15 @@ import { Product } from '../../../models';
 
 type Data = { message: string } | IProduct[] | IProduct;
 
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '500mb', // Set desired value here
+      responseLimit: false,
+    },
+  },
+};
+
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>

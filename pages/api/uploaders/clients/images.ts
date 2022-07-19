@@ -32,7 +32,7 @@ export default function handler(
 const uploadImageUser = async (req: NextApiRequest, res: NextApiResponse) => {
   const session: any = await getToken({
     req,
-    secret: process.env.NEXTAUTH_URL,
+    secret: process.env.NEXTAUTH_SECRET,
   });
   const { base64, fileType, extension } = req.body;
   const basecv = Buffer.from(base64, 'base64');

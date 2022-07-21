@@ -408,7 +408,6 @@ const ProductAdminPage: NextPage<PropsWithChildren<Props>> = ({ product }) => {
                 spacing={2}
                 sm={3}
                 xs={4}
-                onDeleteImage={onDeleteImage}
               />
             </Box>
           </Grid>

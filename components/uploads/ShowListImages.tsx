@@ -21,17 +21,6 @@ export const ShowListImages: FC<PropsWithChildren<IProp>> = ({
   sm,
   xs,
 }) => {
-  const [imagesList, setImagesList] = useState([]);
-  useEffect(() => {
-    images = imagesList;
-  }, [images]);
-
-  const onDeleteImage = (image: string) => {
-    images = images.filter((img) => img !== image);
-    setImagesList(images as any);
-    console.log(images);
-  };
-
   return (
     <Grid container spacing={spacing}>
       {images.map((img) => (
@@ -44,11 +33,7 @@ export const ShowListImages: FC<PropsWithChildren<IProp>> = ({
               alt={img}
             />
             <CardActions>
-              <Button
-                fullWidth
-                color='error'
-                onClick={() => onDeleteImage(img)}
-              >
+              <Button fullWidth color='error'>
                 Delete
               </Button>
             </CardActions>

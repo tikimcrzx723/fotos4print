@@ -23,7 +23,7 @@ const DashboardPage = () => {
       refreshInterval: 30 * 1000,
     }
   );
-  
+
   const [refreshIn, setRefreshIn] = useState(30);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const DashboardPage = () => {
 
   if (error) {
     console.log(error);
-    return <Typography>Error al cargar la información</Typography>;
+    return <Typography>Error loading information</Typography>;
   }
 
   const {

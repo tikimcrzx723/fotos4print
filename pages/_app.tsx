@@ -10,8 +10,6 @@ import { lightTheme } from '../themes';
 import { AuthProvider, CartProvider, UIProvider } from '../context';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  console.log();
-
   return (
     <SessionProvider>
       <PayPalScriptProvider

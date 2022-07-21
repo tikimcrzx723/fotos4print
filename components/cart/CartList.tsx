@@ -34,16 +34,6 @@ export const CartList: FC<PropsWithChildren<Props>> = ({
     updateCartQuantity(product);
   };
 
-  const [openLoadImage, setOpenLoadImage] = useState(false);
-
-  const handleClickOpen = () => {
-    setOpenLoadImage(true);
-  };
-
-  const handleClose = () => {
-    setOpenLoadImage(false);
-  };
-
   const productToShow = products ? products : cart;
 
   return (
@@ -77,12 +67,7 @@ export const CartList: FC<PropsWithChildren<Props>> = ({
               </Typography>
               {/* Conditional */}
               {editable ? (
-                <UploadImageByCart
-                  open={openLoadImage}
-                  product={product}
-                  handleClickOpen={handleClickOpen}
-                  handleClose={handleClose}
-                />
+                <UploadImageByCart product={product} />
               ) : (
                 <Typography variant='h5'>
                   {product.quantity} product{product.quantity > 1 ? 's' : ''}

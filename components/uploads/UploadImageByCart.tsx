@@ -15,26 +15,20 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { UploadOutlined } from '@mui/icons-material';
 import { appApi } from '../../api';
-import { Box } from '@mui/material';
+import { Box, Card, CardActions, CardMedia, Grid } from '@mui/material';
 import { CartContext } from '../../context';
 import { ICartProduct, IOrderItem } from '../../interfaces';
 import { converters } from '../../libs';
-import { ShowListImages } from './ShowListImages';
 
 interface Props {
-  open: boolean;
   product: IOrderItem | ICartProduct;
-  handleClickOpen: () => void;
-  handleClose: () => void;
 }
 
 export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
-  open,
   product,
-  handleClickOpen,
-  handleClose,
 }) => {
   const theme = useTheme();
+  const [open, setOpen] = useState(false);
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [viewImage, setViewImage] = useState([]);
@@ -42,6 +36,14 @@ export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
   const [imagesServer, setImagesServer] = useState([]);
   const [sendFileS3, setSendFileS3] = useState(false);
   const { updateCartQuantity } = useContext(CartContext);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const onFilesSelected = async ({ target }: ChangeEvent<HTMLInputElement>) => {
     if (!target.files || target.files.length === 0) {
@@ -71,12 +73,14 @@ export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
   };
 
   const onDeleteImage = (image: string) => {
-    setViewImage(viewImage.filter((img) => img !== image));
+    const removeImage = viewImage.filter((img) => img !== image);
+    product.tempImages = removeImage;
+    setViewImage(removeImage);
+
     if (product.quantity > 0) {
       product.quantity = product.quantity - 1;
       product.tempImages = viewImage;
       if (sendFileS3) {
-        
       }
       updateCartQuantity(product as ICartProduct);
     }
@@ -105,7 +109,6 @@ export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
     product.quantity = newQuantityValue;
     const imagesUser = await returnImagesServer();
     setImagesServer(imagesUser as any);
-    console.log(imagesServer);
 
     product.userImages = imagesUser;
 
@@ -148,13 +151,29 @@ export const UploadImageByCart: FC<PropsWithChildren<Props>> = ({
               accept='.png, .jpg, .jpge, .JPGE, .pdf'
               style={{ display: 'none' }}
             />
-            <ShowListImages
-              images={product.tempImages as any}
-              spacing={3}
-              xs={12}
-              sm={4}
-              onDeleteImage={onDeleteImage}
-            />
+            <Grid container spacing={3}>
+              {product.tempImages!.map((img) => (
+                <Grid item key={img} xs={12} sm={4}>
+                  <Card>
+                    <CardMedia
+                      component='img'
+                      className='fadeIn'
+                      image={img}
+                      alt={img}
+                    />
+                    <CardActions>
+                      <Button
+                        fullWidth
+                        color='error'
+                        onClick={() => onDeleteImage(img)}
+                      >
+                        Delete
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
           </Box>
         </DialogContent>
         <DialogActions>

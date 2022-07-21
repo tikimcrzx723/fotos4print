@@ -6,16 +6,13 @@ import {
   CardMedia,
   Grid,
 } from '@mui/material';
-import { FC, PropsWithChildren } from 'react';
+import { FC, PropsWithChildren, useState, useEffect } from 'react';
 
 interface IProp {
   images: string[];
   spacing: number;
   sm: number;
   xs: number;
-  elementCounter?: JSX.Element;
-  elementShowQuantity?: JSX.Element;
-  onDeleteImage: (img: string) => void;
 }
 
 export const ShowListImages: FC<PropsWithChildren<IProp>> = ({
@@ -23,15 +20,22 @@ export const ShowListImages: FC<PropsWithChildren<IProp>> = ({
   spacing,
   sm,
   xs,
-  elementCounter,
-  elementShowQuantity,
-  onDeleteImage,
 }) => {
+  const [imagesList, setImagesList] = useState([]);
+  useEffect(() => {
+    images = imagesList;
+  }, [images]);
+
+  const onDeleteImage = (image: string) => {
+    images = images.filter((img) => img !== image);
+    setImagesList(images as any);
+    console.log(images);
+  };
+
   return (
     <Grid container spacing={spacing}>
       {images.map((img) => (
         <Grid item key={img} xs={xs} sm={sm}>
-          {elementShowQuantity}
           <Card>
             <CardMedia
               component='img'
@@ -39,7 +43,6 @@ export const ShowListImages: FC<PropsWithChildren<IProp>> = ({
               image={img}
               alt={img}
             />
-            {elementCounter}
             <CardActions>
               <Button
                 fullWidth

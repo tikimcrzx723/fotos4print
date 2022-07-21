@@ -21,8 +21,6 @@ export default function handler(
 }
 
 const loginUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-  console.log('Hola');
-
   const { email = '', password = '' } = req.body;
 
   await db.connect();
@@ -35,7 +33,6 @@ const loginUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   }
 
   if (!bcryptjs.compareSync(password, user.password!)) {
-    console.log('No Entre');
     return res.status(400).json({ message: 'Correo o contraseña no válidos' });
   }
 

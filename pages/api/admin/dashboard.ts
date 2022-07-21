@@ -19,7 +19,6 @@ export default function handler(
   switch (req.method) {
     case 'GET':
       return getData(req, res);
-      break;
 
     default:
       break;

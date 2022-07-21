@@ -6,7 +6,6 @@ export async function middleware(req: NextRequest | any, ev: NextFetchEvent) {
     req,
     secret: process.env.NEXTAUTH_SECRET,
   });
-  console.log(session);
 
   if (!session) {
     try {
@@ -21,7 +20,7 @@ export async function middleware(req: NextRequest | any, ev: NextFetchEvent) {
     }
   }
 
-  const validRoles = ['client'];
+  const validRoles = ['client', 'admin', 'federal', 'frequency'];
 
   if (!validRoles.includes(session.user.role)) {
     try {
